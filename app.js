@@ -4,6 +4,7 @@ const mongoose = require('mongoose'); // import mongoose
 
 const adminPageRoute = require('./routes/admin/pageRouter'); // import adminPageRoute
 
+const siteRouter = require('./routes/site/siteRouter'); // import siteRouter
 
 
 const app = express(); // initialize express
@@ -18,9 +19,13 @@ mongoose.connect("mongodb://127.0.0.1:27017/portfolio").then(() => {
 
 
 
-
 // ADMIN ROUTES
 app.use('/admin', adminPageRoute); // configure express to use adminPageRoute
+
+
+// SITE ROUTES
+app.use('/', siteRouter); // configure express to use siteRouter
+
 
 const port = 3000; // we will use this later
 app.listen(port, () => {
